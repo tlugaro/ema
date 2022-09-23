@@ -1,0 +1,431 @@
+/*
+    DEMO STYLE
+*/
+
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+
+  font-family: "Raleway", sans-serif;
+    background: #fafafa;
+}
+
+p {
+
+  font-family: "Raleway", sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #fff;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway", sans-serif;
+    color: #fff;
+}
+a,
+a:hover,
+a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+
+    background: rgba(0,0,0,0);
+    border: none;
+    margin-bottom: 40px;
+    z-index: 998;
+    width: 200px;
+    padding:5px;
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.legend{
+    z-index: 500;
+}
+#info legend leaflet-control{
+    z-index:500;
+}
+
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+#sidebar {
+    width: 80vh;
+    position: fixed;
+    top: 0;
+    left: -80vh;
+    height: 100vh;
+    z-index: 9999;
+    background: #417261;
+    color: #fff;
+    transition: all 0.3s;
+    overflow-y: scroll;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+    align-content: center;
+    padding-right: 15px;
+    padding-left: 2px;
+
+}
+
+#sidebar.active {
+    left: 0;
+}
+#IMAGEN_FLOT {
+                        position:absolute;
+                        top:0%;
+                        right:5%;
+                        }
+#dismiss {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background:  #417261;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    z-index: 9999;
+}
+
+#dismiss:hover {
+    background: #fff;
+    color: rgba(15,67,30, 0.9);
+}
+
+
+
+#sidebar .sidebar-header {
+
+    padding: 20px;
+    background:  #417261;
+    text-align:center;
+    z-index: 9999;
+}
+
+#sidebar ul.components {
+    padding: 20px ;
+    border-bottom: 1px solid #6f8282;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+    display:inline;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+}
+
+#sidebar ul li a:hover {
+    color:#004735;
+    background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #004735;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+form{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align:center;
+
+}
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #004735;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+a.download {
+    background: #fff;
+    color: #148F77;
+
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+
+}
+
+a.article,
+a.article:hover {
+    background: #148F77!important;
+    color: #fff !important;
+}
+
+@media only screen and (max-width: 900px) {
+    #sidebar {
+        width: 40vh;
+        background:#417261;
+    }
+}
+@media only screen and (max-width: 600px) {
+    #IMAGEN_FLOT {
+                        position:absolute;
+                        bottom:-10%;
+                        left:-50%;
+                        z-index:998;
+                        }
+}
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+.cta-btn {
+    font-family: "Raleway", sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 8px 28px;
+    border-radius: 25px;
+    transition: 0.5s;
+    margin-top: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+}
+
+ .cta-btn:hover {
+    border-color: #fff;
+}
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#newLayer{
+    color: #232323;
+    background-color: #fff;
+    align-content: center;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+#newLayer:hover{
+    background-color: #004735;
+
+    border:none ;
+    color: #fff;
+
+}
+#downloaderLayer{
+    color: #232323;
+    background-color: #fff;
+    align-content: center;
+    border: none;
+    margin-top:10px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+#downloaderLayer:hover{
+    background-color: #004735;
+    position: relative;
+    border:none ;
+    color: #fff;
+}
+
+#sidebarCollapse{
+    background: rgba(15,67, 30, 0.8);
+}
+#sidebarCollapse:hover{
+    background: #148F77;
+}
+#volver{
+    background: rgba(15,67, 30, 0.8);
+    border:none ;
+    margin-top:2px;
+}
+#volver:hover{
+    background: #148F77;
+}
+
+#volveralinicio{
+    color: #232323;
+    background-color: #fff;
+    align-content: center;
+    border: none;
+    margin-top:10px;
+    margin-left: 62px;
+    margin-right: 62px;
+}
+#volveralinicio:hover{
+    background-color: #004735;
+    position: relative;
+    border:none ;
+    color: #fff;
+}
+
+
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Audiowide);
+html {
+   box-sizing: border-box;
+   font-family: Arial, sans-serif;
+   font-size: 16px;
+   font-weight: normal;
+}
+
+*,
+*:before,
+*:after {
+   box-sizing: inherit;
+}
+
+html,
+body {
+   height: 100%;
+   margin: 0;
+   padding: 0;
+   width: 100%;
+}
+
+
+
+@media (min-width: 1075px) {
+   h1 {
+      font-size: 4.7em;
+   }
+}
+
+pre {
+   background: #fff;
+   display: inline-block;
+   font-size: .55em;
+   margin-top: 2em;
+   padding: 1em;
+}
+
+@media (min-width: 360px) {
+   pre {
+      font-size: .7em;
+   }
+}
+
+@media (min-width: 500px) {
+   pre {
+      font-size: 1em;
+   }
+}
+
+
+/*== start of code for tooltips ==*/
+.tool {
+    cursor: help;
+    position: relative;
+}
+
+
+/*== common styles for both parts of tool tip ==*/
+.tool::before,
+.tool::after {
+    left: 50%;
+    opacity: 0;
+    position: absolute;
+    z-index: -100;
+}
+
+.tool:hover::before,
+.tool:focus::before,
+.tool:hover::after,
+.tool:focus::after {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    z-index: 100;
+}
+
+.tool::before {
+    border-style: solid;
+    border-width: 1em 0.75em 0 0.75em;
+    border-color: #3E474F transparent transparent transparent;
+    bottom: 100%;
+    content: "";
+    margin-left: -0.5em;
+    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26), opacity .65s .5s;
+    transform:  scale(.6) translateY(-90%) ;
+}
+
+.tool:hover::before,
+.tool:focus::before {
+    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26) .2s;
+}
+
+
+/*== speech bubble ==*/
+.tool::after {
+    background: #3E474F;
+    border-radius: .25em;
+    bottom: 150%;
+    color: #EDEFF0;
+    content: attr(data-tip);
+    margin-left: -8.75em;
+    padding: 1em;
+    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26) .2s;
+    transform:  scale(.6) translateY(50%);
+    width: 17.5em;
+}
+
+.tool:hover::after,
+.tool:focus::after  {
+    transition: all .65s cubic-bezier(.84,-0.18,.31,1.26);
+}
+
+@media (max-width: 760px) {
+  .tool::after {
+        font-size: .75em;
+        margin-left: -5em;
+        width: 10em;
+  }
+}

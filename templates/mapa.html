@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>CIAg - Agua útil</title>
+    <!-- Favicons -->
+    <link href="{{ url_for('static',filename='/img/icono.ico')}}" rel="icon">
+    <link href="{{ url_for('static',filename='/img/icono.png')}}"  rel="apple-touch-icon" alt="Ciag">
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='/css/stlye_presente.css')}}">
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    <!-- LEAFLET -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet-src.js" integrity="sha512-GBlVVqOnLycKN+z49gDABUY6RxEQjOw/GHFbpboxpTxAPJQ78C6pAjT08S/1fT9pWOy9PeyDqipC7cBwrfX2cA==" crossorigin=""></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-locatecontrol/0.66.2/L.Control.Locate.min.css"/>
+
+    <script type="text/javascript" src="{{ url_for('static',filename='/capas/provincias.js')}}"></script>
+
+
+</head>
+    <style>
+        .foliumtooltip {
+            background-color: grey; color: white;
+        }
+        .foliumtooltip table{
+            margin: auto;
+        }
+        .foliumtooltip tr{
+            text-align: left;
+        }
+        .foliumtooltip th{
+            padding: 2px; padding-right: 8px;
+        }
+    </style>
+
+
+    <style>
+        .foliumtooltip {
+            background-color: grey; color: white;
+        }
+        .foliumtooltip table{
+            margin: auto;
+        }
+        .foliumtooltip tr{
+            text-align: left;
+        }
+        .foliumtooltip th{
+            padding: 2px; padding-right: 8px;
+        }
+        .legend {
+            line-height: 20px;
+            color: #232323;
+            border-radius: 5px;
+            background-color: rgba(222,222,222,0.6);
+
+        }
+        .legend i {
+            width: 20px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            margin-bottom: 2px;
+            opacity: 0.7;
+        }
+    </style>
+<body>
+
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <nav id="sidebar">
+        <div id="dismiss" >
+            <i class="fas fa-arrow-left"></i>
+        </div>
+
+        <div class="sidebar-header">
+            <h2>Agua útil</h2>
+        </div>
+
+        <ul class="list-unstyled components">
+            <form id="capas" name= "formulario1">
+
+                <div class="form-group" >
+                <label for="var">Año </label>
+                <select class="form-control" id="year" name="ann" >
+                    <option value="" disabled selected>Elija un Año</option>
+                    <option value="-" >2015</option>
+                    <option value="-" >2016</option>
+                    <option value="-" >2017</option>
+                    <option value="-" >2018</option>
+                    <option value="-" >2019</option>
+                    <option value="-" >2020</option>
+                    <option value="-" >2021</option>
+                    <option value="-" >2022</option>
+
+                </select>
+            </div>
+                <div class="form-group" >
+                    <label for="var">Mes </label>
+                    <select class="form-control" id="var" name="cosa"  >
+                        <option value="" disabled selected>Elija una variable</option>
+                        <option value="1">01</option>
+
+                    </select>
+                </div>
+
+                <button class="cta-btn" id="newLayer"  > Ver Capa</button>
+                <button class="cta-btn" id="downloaderLayer"  >Descargar Capa</button>
+
+                <button class="cta-btn" id="volveralinicio"  ><a href="index.html">Volver al Inicio</a></button>
+            </form>
+
+            </form>
+
+
+        </ul>
+
+        <ul class="list-unstyled CTAs">
+
+            <a href="index.html"><img src="{{ url_for('static',filename='/img/icon.png')}}", class="img-fluid"></a>
+        </ul>
+
+    </nav>
+
+    <!-- Page Content  -->
+    <div id="content">
+
+        <nav class="navbar">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="bi-layers-half"></i>
+                    <span>Control de Capas</span>
+                </button>
+                <a href="index"><button id="volver" class="btn btn-info">
+                    <span>Volver al inicio</span>
+                </button></a>
+            </div>
+
+        </nav>
+    </div>
+</div>
+<div class="loading"></div>
+<a href="index"><img id="IMAGEN_FLOT" alt="CIAg"
+                     src="{{ url_for('static',filename='/img/icon.png')}}"
+                     style="z-index: 999999">
+</img></a>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+<!-- jQuery Custom Scroller CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="https://unpkg.com/proj4"></script>
+<script src="https://unpkg.com/georaster"></script>
+<script src="https://unpkg.com/georaster-layer-for-leaflet/georaster-layer-for-leaflet.browserify.min.js"></script>
+<!-- script tomymaps -->
+<script type="text/javascript" src="{{ url_for('static',filename='/capas/provincias.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
+
+<script type="text/javascript" charset="UTF-8" >
+    $('#sidebar').addClass('active');
+    $(document).ready(function () {
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
+
+        $('#dismiss, .overlay').on('click', function () {
+            $('#sidebar').removeClass('active');
+            $('.overlay').removeClass('active');
+        });
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').addClass('active');
+            $('.overlay').addClass('active');
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+        });
+    });
+
+    function onEachFeature(feature, layer) {
+        layer.on({
+        });
+    };
+    function styleprov() {
+        return {
+            weight: 1.5,
+            opacity: 0.8,
+            color: 	"#ffffff",
+            dashArray: '1',
+            fillOpacity: 0,
+            fillColor: 	"#ffffff"
+        };
+    }
+
+    var prov= new L.geoJson( provincias, {
+        style: styleprov,
+        onEachFeature: onEachFeature
+
+    })
+
+    var map = L.map('content', { zoomControl:false, minZoom: 4, zoomSnap: 0.25 }).setView([-38.86, -64.33], 4.5);
+    new L.Control.Zoom({ position: 'topright' }).addTo(map);
+    var locate_control_e5f44ad5fae447d4ab47540d30978b01 = L.control.locate(
+        {position:"topright"}
+    ).addTo(map);
+    var all = L.layerGroup().addTo(map)
+    var layerGroup = L.layerGroup();
+    var legend = L.control({position: 'bottomright'});
+
+
+    var overlayMaps = {
+        "Limites Provinciales": prov
+
+
+    };
+    var baseMaps = {
+    };
+
+    var control_capas=    L.control.layers(baseMaps, overlayMaps,{
+        position: 'topright', // 'topleft', 'bottomleft', 'bottomright'
+        collapsed: false // true
+    }).addTo(map);
+
+    L.tileLayer("https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png",
+        {"attribution": "\u003ca href=\"http://www.ciag.com.ar\" target=\"_blank\"\u003eCIAg\u003c/a\u003e | \u003ca href=\"http://www.ign.gob.ar\" target=\"_blank\"\u003eInstituto Geogr\u00e1fico Nacional\u003c/a\u003e + \u003ca href=\"http://www.osm.org/copyright\" target=\"_blank\"\u003eOpenStreetMap\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "z-index":900, "minZoom": 4, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+    ).addTo(map);
+
+map.on('click', function(e) {
+    layerGroup.clearLayers();
+    var lat= e.latlng.lat
+    var long= e.latlng.lng
+    console.log(lat)
+    console.log(long)
+    var marker =new L.Marker([lat,long]).addTo(layerGroup)
+    layerGroup.addTo(map)
+
+})
+</script>
+</body>
