@@ -11,7 +11,7 @@ from pandas import json_normalize
 import numpy as np
 import pandas as pd
 import math
-
+from cla import publicKey, privateKey
 app = Flask(__name__)
 
 
@@ -22,8 +22,6 @@ def mapa():
 @app.route('/')
 def home_page():
     # HMAC Authentication credentials
-    publicKey = 'cbbc417983f46ad4292a4ea93f6b4dff7074c20d7bc1b7e0'
-    privateKey = 'e2c745bf445a99390999bcce7d7e424beef75b7e2234db78'
 
     # Class to perform HMAC encoding
     class AuthHmacMetosGet(AuthBase):
@@ -70,9 +68,9 @@ def home_page():
     valoresmax = df2['values.max']
     ppt=valoressum[3]
 
-    pp= round((sum(ppt)),1)
-    tmax= round(max(valoresmax[6]),1)
-    tmin=round(min(valoresmin[6]),1)
+    pp= round((sum(ppt[24:48])),1)
+    tmax= round(max(valoresmax[6][24:48]),1)
+    tmin=round(min(valoresmin[6][24:48]),1)
 
     marchaviento = valores2[11]
     marchadirviento = valores2[12]
@@ -106,3 +104,8 @@ def home_page():
     return render_template('ema.html',d=d,hour1=hour1,wind=wind,puntorocio=marchapuntorocio,mrad=marcharad,mhum=marchahum,mpp=ppt,mtsuelo=marchatsuelo,mtmed=marchatmed,tmax=tmax,tmin=tmin, rad=radiacion,pp=pp, temp= temp_suelo, temp2=temp_air, hum=humedad,hora=hour,date=date)
 
 
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)

@@ -1,0 +1,2 @@
+publicKey = 'cbbc417983f46ad4292a4ea93f6b4dff7074c20d7bc1b7e0'
+privateKey = 'e2c745bf445a99390999bcce7d7e424beef75b7e2234db78'
